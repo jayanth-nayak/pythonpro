@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Property_price</title>
+        <style>
+            body{
+                background-color: rgb(192, 211, 235);
+            }
+            .main1{
+                margin-top: 2px;
+                text-align: center;
+                color: rgb(108, 103, 106);
+                height: 60px;
+            }
+            .leftcol{
+                float: left;
+                width: 50%;
+            }
+            .leftside{
+                margin-left: 30px;
+                float:left;
+                width: 450px;
+                font-size: 18px;
+                align-items: center;
+                text-align: center;
+                padding-left: 5%;
+                padding-right: 10%;
+                background-color: rgb(150, 211, 235);
+                border: 15px solid rgba(125, 114, 114, 0.5);
+            }
+            .rightside{
+                margin-top: 100px;
+                margin-left: 30px;
+                float:left;
+                width: 250px;
+                font-size: 20px;
+                align-items: center;
+                text-align: center;
+                padding-left: 5%;
+                padding-right: 5%;
+                background-color: rgb(150, 211, 235);
+                border: 15px solid rgba(125, 114, 114, 0.5);
+            }
+            .names{
+                float: left;
+            }
+            .values1{
+                width: 50%;
+                padding-top: 4px;
+                padding-bottom: 4px;
+                float:center;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="main1"><h1><u>Price Prediction</u></h1></div>
+        <div class="row">
+            <form action="{{ url_for('predict')}}"method="POST">
+                <div class="leftcol">
+                    <div class="leftside">
+                        <h3>Features:</h3>
+                        <span class="names">city:</span>
+                        <select name = 'city2' class="values1" required="required">
+                            <option value="">Select city</option>
+                            <option value="bangalore">Bangalore</option>
+                            <option value="chennai">Chennai</option>
+                            <option value="faridabad">Faridabad</option>
+                            <option value="ghaziabad">Ghaziabad</option>
+                            <option value="greater noida">Greater noida</option>
+                            <option value="gurgaon">Gurgaon</option>
+                            <option value="hyderabad">Hyderabad</option>
+                            <option value="mangalore">Mangalore</option>
+                            <option value="navi mumbai">Navi mumbai</option>
+                            <option value="new delhi">New delhi</option>
+                            <option value="noida">Noida</option>
+                            <option value="pune">Pune</option>
+                            <option value="trivandrum">Trivandrum</option>
+                            <option value="vapi">Vapi</option>
+                            <option value="vijayawada">Vijayawada</option>
+                            <option value="visakhapatnam">Visakhapatnam</option>
+                        </select>
+                        <br>
+                        <br>
+                        <span class="names">Bedrooms:</span>
+                        <input class="values1" style="width:400;" type="number" name="Bedrooms" step="1" min="0" max="10" placeholder="Bathrooms" required="required" />
+                        <br>
+                        <br>
+                        <span class="names">Bathrooms:</span>
+                        <input class="values1" style="width:400;" type="number" name="Bathrooms" step="1" min="0" max="20" placeholder="Bathrooms" required="required" />
+                        <br>
+                        <br>
+                        <span class="names">Transaction:</span>
+                        <select name = 'Transaction' class="values1">
+                            <option value="">Select Transaction </option>
+                            <option value="resale">Resale</option>
+                            <option value="new property">New Property</option>
+                            <option value="rent">Rent</option>
+                        </select>
+                        <br>
+                        <br>
+                        <span class="names">Electricity:</span>
+                        <select name = 'StatusOfElectricity' class="values1">
+                            <option value="">Select Electricity </option>
+                            <option value="no/rare powercut">no/rare powercut</option>
+                            <option value="less than 2 hour powercut">less than 2 hour powercut</option>
+                            <option value="2 to 4 hours powercut">2 to 4 hours powercut</option>
+                            <option value="4 to 6 hours powercut">4 to 6 hours powercut</option>
+                            <option value="over 6 hours powercu"> Over 6 hours powercut</option>
+                        </select>
+                        <br>
+                        <br>
+                        <span class="names">Furnishing:</span>
+                        <select name = 'Furnishing' class="values1">
+                            <option value="">Select Furnishing </option>
+                            <option value="furnished">Furnished</option>
+                            <option value="semi-furnished">Semi-Furnished</option>
+                            <option value="unfurnished">Unfurnished</option>
+                        </select>
+                        <br>
+                        <br>
+                        <span class="names">Loan Offered:</span>
+                        <select name = 'LoanOffered' class="values1">
+                            <option value="">Select Loan Offered </option>
+                            <option value="yes">Yes</option>
+                            <option value="no">No</option>
+                        </select>
+                        <br>
+                        <br>
+                        <span class="names">Superarea:</span>
+                        <input class="values1" style="width:400;" type="number" name="Super area" step="1" min="0" max="10000" placeholder="Super area" required="required" />
+                        <br>
+                        <br>
+                        <span class="names">Water Available:</span>
+                        <select name = 'WaterAvailability' class="values1">
+                            <option value="">Select Water Available </option>
+                            <option value=24>24</option>
+                            <option value=12>12</option>
+                            <option value=6>6</option>
+                            <option value=2>2</option>
+                            <option value=1>1</option>
+                        </select>
+                        <br>
+                        <br>
+                        <span class="names">Floors:</span>
+                        <input class="values1" style="width:400;" type="number" name="Floors" step="1" min="0" max="20" placeholder="Floors" required="required" />
+                        <br>
+                        <br>
+                        <input type="submit" value="Submit">
+                        <br>
+                        <br>
+
+                    </div>
+                </div>
+                <div class="rightcol">
+                    <div class="rightside">
+                        <h2><u>Estimated Price</u></h2>
+                        <h4>{{price}} {{pricein}}</h4>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
